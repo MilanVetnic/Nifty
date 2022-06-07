@@ -1,0 +1,516 @@
+/* Noise Animation  */
+
+.noise {
+    position: fixed;
+    left: 0%;
+    top: 0%;
+    right: 0%;
+    bottom: 0%;
+    z-index: 100;
+    display: none;
+    pointer-events: none;
+    height: 100vh;
+    opacity: 0.2;
+    mix-blend-mode: difference;
+}
+
+.noise::before {
+    content: "";
+    z-index: 999;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('./images/noise-web.webp');
+    -webkit-animation: 90ms infinite noise;
+    animation: 90ms infinite noise;
+}
+
+@keyframes noise {
+    0%,
+    100% {
+        background-position: 0 0;
+    }
+    10% {
+        background-position: -5% -10%;
+    }
+    20% {
+        background-position: -15% 5%;
+    }
+    30% {
+        background-position: 7% -25%;
+    }
+    40% {
+        background-position: 20% 25%;
+    }
+    50% {
+        background-position: -25% 10%;
+    }
+    60% {
+        background-position: 15% 5%;
+    }
+    70% {
+        background-position: 0 15%;
+    }
+    80% {
+        background-position: 25% 35%;
+    }
+    90% {
+        background-position: -10% 10%;
+    }
+}
+
+
+/* First Section - Glitch Boxes Animation -  */
+
+.layers {
+    width: 10%;
+    position: relative;
+}
+
+.layers::before,
+.layers::after {
+    content: attr(data-text);
+    position: absolute;
+    width: 50%;
+    height: 50%;
+    z-index: -1;
+}
+
+.layers::before {
+    bottom: 10px;
+    left: 15px;
+    color: #e0287d;
+}
+
+.layers::after {
+    bottom: 15px;
+    right: -110px;
+    color: #fff8e0;
+}
+
+.single-path {
+    clip-path: polygon( 0% 12%, 53% 12%, 53% 26%, 25% 26%, 25% 86%, 31% 86%, 31% 0%, 53% 0%, 53% 84%, 92% 84%, 92% 82%, 70% 82%, 70% 29%, 78% 29%, 78% 65%, 69% 65%, 69% 66%, 77% 66%, 77% 45%, 85% 45%, 85% 26%, 97% 26%, 97% 28%, 84% 28%, 84% 34%, 54% 34%, 54% 89%, 30% 89%, 30% 58%, 83% 58%, 83% 5%, 68% 5%, 68% 36%, 62% 36%, 62% 1%, 12% 1%, 12% 34%, 60% 34%, 60% 57%, 98% 57%, 98% 83%, 1% 83%, 1% 53%, 91% 53%, 91% 84%, 8% 84%, 8% 83%, 4% 83%);
+}
+
+.paths {
+    animation: paths 3s step-end;
+}
+
+@keyframes paths {
+    0% {
+        clip-path: polygon( 0% 43%, 83% 43%, 83% 22%, 23% 22%, 23% 24%, 91% 24%, 91% 26%, 18% 26%, 18% 83%, 29% 83%, 29% 17%, 41% 17%, 41% 39%, 18% 39%, 18% 82%, 54% 82%, 54% 88%, 19% 88%, 19% 4%, 39% 4%, 39% 14%, 76% 14%, 76% 52%, 23% 52%, 23% 35%, 19% 35%, 19% 8%, 36% 8%, 36% 31%, 73% 31%, 73% 16%, 1% 16%, 1% 56%, 50% 56%, 50% 8%);
+    }
+    5% {
+        clip-path: polygon( 0% 29%, 44% 29%, 44% 83%, 94% 83%, 94% 56%, 11% 56%, 11% 64%, 94% 64%, 94% 70%, 88% 70%, 88% 32%, 18% 32%, 18% 96%, 10% 96%, 10% 62%, 9% 62%, 9% 84%, 68% 84%, 68% 50%, 52% 50%, 52% 55%, 35% 55%, 35% 87%, 25% 87%, 25% 39%, 15% 39%, 15% 88%, 52% 88%);
+    }
+    30% {
+        clip-path: polygon( 0% 53%, 93% 53%, 93% 62%, 68% 62%, 68% 37%, 97% 37%, 97% 89%, 13% 89%, 13% 45%, 51% 45%, 51% 88%, 17% 88%, 17% 54%, 81% 54%, 81% 75%, 79% 75%, 79% 76%, 38% 76%, 38% 28%, 61% 28%, 61% 12%, 55% 12%, 55% 62%, 68% 62%, 68% 51%, 0% 51%, 0% 92%, 63% 92%, 63% 4%, 65% 4%);
+    }
+    45% {
+        clip-path: polygon( 0% 33%, 2% 33%, 2% 69%, 58% 69%, 58% 94%, 55% 94%, 55% 25%, 33% 25%, 33% 85%, 16% 85%, 16% 19%, 5% 19%, 5% 20%, 79% 20%, 79% 96%, 93% 96%, 93% 50%, 5% 50%, 5% 74%, 55% 74%, 55% 57%, 96% 57%, 96% 59%, 87% 59%, 87% 65%, 82% 65%, 82% 39%, 63% 39%, 63% 92%, 4% 92%, 4% 36%, 24% 36%, 24% 70%, 1% 70%, 1% 43%, 15% 43%, 15% 28%, 23% 28%, 23% 71%, 90% 71%, 90% 86%, 97% 86%, 97% 1%, 60% 1%, 60% 67%, 71% 67%, 71% 91%, 17% 91%, 17% 14%, 39% 14%, 39% 30%, 58% 30%, 58% 11%, 52% 11%, 52% 83%, 68% 83%);
+    }
+    76% {
+        clip-path: polygon( 0% 26%, 15% 26%, 15% 73%, 72% 73%, 72% 70%, 77% 70%, 77% 75%, 8% 75%, 8% 42%, 4% 42%, 4% 61%, 17% 61%, 17% 12%, 26% 12%, 26% 63%, 73% 63%, 73% 43%, 90% 43%, 90% 67%, 50% 67%, 50% 41%, 42% 41%, 42% 46%, 50% 46%, 50% 84%, 96% 84%, 96% 78%, 49% 78%, 49% 25%, 63% 25%, 63% 14%);
+    }
+    90% {
+        clip-path: polygon( 0% 41%, 13% 41%, 13% 6%, 87% 6%, 87% 93%, 10% 93%, 10% 13%, 89% 13%, 89% 6%, 3% 6%, 3% 8%, 16% 8%, 16% 79%, 0% 79%, 0% 99%, 92% 99%, 92% 90%, 5% 90%, 5% 60%, 0% 60%, 0% 48%, 89% 48%, 89% 13%, 80% 13%, 80% 43%, 95% 43%, 95% 19%, 80% 19%, 80% 85%, 38% 85%, 38% 62%);
+    }
+    1%,
+    7%,
+    33%,
+    47%,
+    78%,
+    93% {
+        clip-path: none;
+    }
+}
+
+.movement {
+    position: relative;
+    animation: movement 3s step-end;
+}
+
+@keyframes movement {
+    0% {
+        bottom: 0px;
+        right: -20px;
+    }
+    15% {
+        bottom: 10px;
+        right: 10px;
+    }
+    60% {
+        bottom: 5px;
+        right: -10px;
+    }
+    75% {
+        bottom: -5px;
+        right: 20px;
+    }
+    100% {
+        bottom: 10px;
+        right: 5px;
+    }
+}
+
+.opacity {
+    animation: opacity 3s step-end;
+}
+
+@keyframes opacity {
+    0% {
+        opacity: 0.1;
+    }
+    5% {
+        opacity: 0.7;
+    }
+    30% {
+        opacity: 0.4;
+    }
+    45% {
+        opacity: 0.6;
+    }
+    76% {
+        opacity: 0.4;
+    }
+    90% {
+        opacity: 0.8;
+    }
+    1%,
+    7%,
+    33%,
+    47%,
+    78%,
+    93% {
+        opacity: 0;
+    }
+}
+
+.font {
+    animation: font 3s step-end;
+}
+
+@keyframes font {
+    0% {
+        font-weight: 100;
+        color: #e0287d;
+        filter: blur(3px);
+    }
+    20% {
+        font-weight: 500;
+        color: #fff;
+        filter: blur(0);
+    }
+    50% {
+        font-weight: 300;
+        color: #1bc7fb;
+        filter: blur(2px);
+    }
+    60% {
+        font-weight: 700;
+        color: #fff;
+        filter: blur(0);
+    }
+    90% {
+        font-weight: 500;
+        color: #e0287d;
+        filter: blur(6px);
+    }
+}
+
+.glitch {
+    animation: paths 3s step-end;
+}
+
+.glitch-firstbox {
+    animation: paths 3s step-end;
+}
+
+.glitch::before {
+    animation: paths 3s step-end, opacity 3s step-end, font 3s step-end, movement 3s step-end;
+}
+
+.glitch::after {
+    animation: paths 3s step-end, opacity 3s step-end, font 3s step-end, movement 3s step-end;
+}
+
+
+/* First Section - Moving Letters Left and Right in the Boxes */
+
+.move_left {
+    --move-initial-left: calc(0% + 50vw);
+    --move-final-left: calc(-73% + 43vw);
+}
+
+.move_left_inner {
+    transition: opacity 0.1s;
+    animation-play-state: paused;
+    animation: move-left 75s linear infinite both;
+    transform: translate3d(var(--move-initial-left), 0, 0);
+}
+
+.move_left .move_left_inner {
+    opacity: 1;
+    transition-duration: 60s;
+    animation-play-state: running;
+}
+
+@keyframes move-left {
+    0% {
+        transform: translate3d(var(--move-initial-left), 0, 0);
+    }
+    100% {
+        transform: translate3d(var(--move-final-left), 0, 0);
+    }
+}
+
+.move_right {
+    --move-initial-right: calc(0% + 1vw);
+    --move-final-right: calc(30% + 100vw);
+}
+
+.move_right_inner {
+    transition: opacity 0.1s;
+    animation-play-state: paused;
+    animation: move-right 75s linear infinite both;
+    transform: translate3d(var(--move-initial-right), 0, 0);
+}
+
+.move_right .move_right_inner {
+    opacity: 1;
+    transition-duration: 60s;
+    animation-play-state: running;
+}
+
+@keyframes move-right {
+    0% {
+        transform: translate3d(var(--move-initial-right), 0, 0);
+    }
+    100% {
+        transform: translate3d(var(--move-final-right), 0, 0);
+    }
+}
+
+
+/* First Section - Portal SVG Loading Animation  */
+
+#logo-portal {
+    width: 144vw;
+    fill-opacity: 0;
+    fill: hsl(46, 100%, 96%);
+    animation: fill 3.5s 3s forwards;
+}
+
+#logo-portal path {
+    stroke-width: 1;
+    animation-delay: 0s;
+    stroke-linecap: round;
+    stroke-dasharray: 1158;
+    stroke-dashoffset: 1172;
+    animation: line-anim 2.9s forwards;
+}
+
+#logo-portal path:nth-child(1) {
+    animation-delay: 0s;
+    stroke-dasharray: 1158;
+    stroke-dashoffset: 1172;
+}
+
+#logo-portal path:nth-child(2) {
+    animation-delay: 0.4s;
+    stroke-dasharray: 1158;
+    stroke-dashoffset: 1172;
+}
+
+#logo-portal path:nth-child(3) {
+    animation-delay: 0.8s;
+    stroke-dasharray: 1158;
+    stroke-dashoffset: 1172;
+}
+
+#logo-portal path:nth-child(4) {
+    animation-delay: 1.2s;
+    stroke-dasharray: 1158;
+    stroke-dashoffset: 1172;
+}
+
+#logo-portal path:nth-child(5) {
+    animation-delay: 1.6s;
+    stroke-dasharray: 1158;
+    stroke-dashoffset: 1172;
+}
+
+#logo-portal path:nth-child(6) {
+    animation-delay: 2s;
+    stroke-dasharray: 1158;
+    stroke-dashoffset: 1172;
+}
+
+@keyframes line-anim {
+    100% {
+        stroke-dashoffset: 0;
+    }
+}
+
+@keyframes fill {
+    100% {
+        fill-opacity: 1;
+    }
+}
+
+
+/* Section Two Animate On Scroll .click_link When in View */
+
+.js-scroll {
+  opacity: 0;
+  transition: opacity 500ms;
+}
+
+.js-scroll.scrolled {
+  opacity: 1;
+}
+
+.scrolled.fade-in {
+  animation: fade-in 0.7s ease-in-out both;
+}
+
+.scrolled.fade-in-bottom {
+  animation: fade-in-bottom 0.7s ease-in-out both;
+}
+
+@keyframes fade-in-bottom {
+  0% {
+    transform: translateY(100px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+  
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+
+/* Fourth Section - Column 1 - Highlight words on scroll when in view */
+
+:root {
+    --padding: 6px;
+    --height: 54px;
+    --height-total: 90px;
+    /* Highlight the section four */
+    --highlight-vstart: 2em;
+    --highlight-vend: 2em;
+    --highlight-range: 100%;
+    --highlight-color: #fff8df;
+}
+
+.highlight {
+    background: linear-gradient(to bottom, transparent, transparent var(--highlight-vstart), transparent var(--highlight-vstart), transparent var(--highlight-vend), transparent var(--highlight-vend), transparent), linear-gradient(to right, var(--highlight-color), var(--highlight-color) var(--highlight-range), transparent var(--highlight-range), transparent);
+}
+
+
+/* Fourth Section - Column 1 - Popping up Words Animation */
+
+.column-1-rows {
+    position: relative;
+}
+
+.container {
+    margin-inline: auto;
+    padding-inline: 2em;
+    transform: scale(1);
+    transform-origin: top right;
+}
+
+.item {
+    --y: 90px;
+    right: 0.65rem;
+    position: absolute;
+    transform: translate3D(0, var(--y), 0);
+}
+
+.item.shown,
+.item.top,
+.item .title {
+    transition: transform 800ms;
+    transition-timing-function: cubic-bezier(0.5, 0.1, 0.1, 1);
+}
+
+.item.layout-basic {
+    text-align: right;
+}
+
+.item.layout-basic .count {
+    line-height: 1;
+    font-size: 2.109rem;
+}
+
+.item.layout-basic .title {
+    line-height: 1.4;
+    font-size: 1.484rem;
+}
+
+.item .title {
+    --y: 10px;
+    transition-delay: 150ms;
+    text-transform: uppercase;
+    transform: translate3D(0, var(--y), 0);
+}
+
+.item.shown {
+    --y: 0px;
+}
+
+.item.shown .title {
+    --y: 0px;
+}
+
+.item.top {
+    opacity: 0;
+    --y: calc(-1 * var(--height-total));
+}
+
+.item.top .title {
+    --y: -10px;
+    transition-delay: 0ms;
+}
+
+
+/* Fourth Section - Column 3 - 3D Letters Animation  */
+
+.rotate3d-letters {
+    transition: 0.1s linear transform;
+}
+
+
+/* Fifth section - Typing letters animation  */
+
+.typing-demo {
+    border: none;
+    font-size: 2em;
+    overflow: hidden;
+    white-space: nowrap;
+    animation: typing 7s steps(60) infinite;
+}
+
+@keyframes typing {
+    0% {
+        width: 0;
+    }
+    50% {
+        width: 100%;
+    }
+    100% {
+        width: 100%;
+    }
+}
